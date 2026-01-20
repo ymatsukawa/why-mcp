@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "node16",
+    "outDir": "./dist",
+    "rootDir": ".",
+    "skipLibCheck": true,
+    "resolveJsonModule": true
+  },
+  "include": [
+    "./**/*.ts"
+  ],
+  "exclude": [
+    "dist",
+    "**/*.test.ts",
+    "vitest.config.ts"
+  ]
+}

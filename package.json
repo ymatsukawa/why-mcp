@@ -1,0 +1,27 @@
+{
+  "name": "socrates-mcp",
+  "version": "0.0.1",
+  "description": "mcp asks why",
+  "author": "ymatsukawa",
+  "main": "index.ts",
+  "scripts": {
+    "build": "npx tsc && chmod +x dist/*.js"
+  },
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "socrates-mcp": "dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.25.2",
+    "zod": "^4.3.5"
+  },
+  "devDependencies": {
+    "@types/node": "^25.0.9",
+    "shx": "^0.4.0",
+    "typescript": "^5.9.3"
+  }
+}
