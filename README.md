@@ -1,10 +1,9 @@
-# socrates mcp
+# why mcp
 
-## Concept
-Think **why**.
+Start from **why**.
 
 ## Purpose
-Stop junk prompts "Create somewhat.", "Refactor it."
+Stop wasting time using junk short prompts "create somewhat".
 
 ## Build
 
@@ -20,14 +19,16 @@ Socrates MCP Server running on stdio
 
 ## .mcp.json
 
+**mcp is optimized for claude code.**
+
 ```
 {
   "mcpServers": {
-    "socrates-mcp": {
+    "why-mcp": {
       "command": "npx",
       "args": [
         "-y",
-        "/path/to/socrates-mcp"
+        "/path/to/why-mcp"
       ]
     }
   }
