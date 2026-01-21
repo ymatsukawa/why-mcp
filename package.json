@@ -1,6 +1,6 @@
 {
-  "name": "socrates-mcp",
-  "version": "0.0.1",
+  "name": "why-mcp",
+  "version": "0.0.2",
   "description": "mcp asks why",
   "author": "ymatsukawa",
   "main": "index.ts",
@@ -10,7 +10,7 @@
   "license": "MIT",
   "type": "module",
   "bin": {
-    "socrates-mcp": "dist/index.js"
+    "why-mcp": "dist/index.js"
   },
   "files": [
     "dist"

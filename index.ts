@@ -3,20 +3,23 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { z } from "zod"
+import { Dialogue } from "./dialogue.js"
 
 const server = new McpServer({
-  name: "socrates-mcp",
-  version: "0.0.1",
+  name: "why-mcp",
+  version: "0.0.2",
 });
 
+const dialogue = new Dialogue()
+
 server.registerTool(
-  "socratesmcp",
+  "whymcp",
   {
-    title: "socratic",
+    title: "whymcp",
     description: `
 Goal:
   - Questioning essence through questions
-NO goal:
+Non-goals:
   - Achieving correctness.
   - Because today's correctness will be tomorrow's incorrectness.
 Three minds:
@@ -28,13 +31,20 @@ Prohibitions:
 Parameters:
   - content
     * user's question
-    * Sometimes, request or order
+    * Sometimes, a request or an order
+  - divingCount:
+    * Current count of diving into 'why'
+  - totalDiviedCount:
+    * How many times you dived in why
+    * Recommendation is 3 to 5
+    * 1 to 2 is too shallow, it's swimming on the surface.
+    * over 5 is too deep, you may drown in hallucination.
 Your task:
   - For you
-    * Start by asking "Why?" and "Why should I do?"
-    * Observe the question's or request's context.
-    * Find the **anomaly** or gap between the user's question and as-is.
-  - For user
+    * Start by asking "Why?" and "Why should I do this?"
+    * Observe the context of the question or request.
+    * Find the **anomaly** or gap between the user's question and the as-is.
+  - For the user
     * Show the user (1) "DivingWhy" (2) "MyQuestion"
     * Finally, use **AskUserQuestion** to ask
 After asking the question:
@@ -46,14 +56,22 @@ Example:
   - MyQuestion: "Why do you want to optimize? For performance? For readability?"
 `,
     inputSchema: {
-      content: z.string(),
+      content: z.string().describe("Current question or order from the user or yourself"),
+      divingCount: z.number().int().min(1).describe("Current count of diving into 'why'"),
+      totalDivedCount: z.number().int().min(1).describe("How many times you dive in 'why'"),
     },
-    outputSchema: {},
+    outputSchema: {
+      divingCount: z.number(),
+      totalDivedCount: z.number()
+    },
   },
   async (args) => {
+    const result = dialogue.diveInWhy(args)
+    
+    const structuredContent = JSON.parse(result.content[0].text)
     return {
-      content: [{ type: "text", text: `user's request: ${args.content}` }],
-      structuredContent: {}
+      content: result.content,
+      structuredContent: structuredContent
     };
   }
 );
@@ -61,7 +79,7 @@ Example:
 async function runServer() {
   const transport = new StdioServerTransport();
   await server.connect(transport);
-  console.error("Socrates MCP Server running on stdio");
+  console.error("Why MCP Server running on stdio");
 }
 
 runServer().catch((e) => {
