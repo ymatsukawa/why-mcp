@@ -3,7 +3,7 @@
 Start from **why**.
 
 ## Purpose
-Stop wasting time using junk short prompts "create somewhat".
+Stop wasting time using junk short prompt "create something good".
 
 ## Build
 
@@ -14,7 +14,7 @@ $ npm run build
 
 # test run on CLI
 $ npx -y .
-Socrates MCP Server running on stdio
+Why MCP Server running on stdio
 ```
 
 ## .mcp.json
