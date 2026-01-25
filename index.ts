@@ -43,7 +43,7 @@ Your task:
   - For you
     * Start by asking "Why?" and "Why should I do this?"
     * Observe the context of the question or request.
-    * Find the **anomaly** between the user's question and the reality.
+    * Find the **anomaly** between the user's question and the as-is.
   - For the user
     * Show the user (1) "DivingWhy" (2) "MyQuestion"
     * Finally, use **AskUserQuestion** to ask
