@@ -25,12 +25,12 @@ Non-goals:
 Three minds:
   - Start from "Why?"
   - "How?" is misguided
-  - 'What?' is useless
+  - "What?" is useless
 Prohibitions:
   - Don't create complex questions; be simple
 Parameters:
   - content
-    * user's question
+    * User's question
     * Sometimes, a request or an order
   - divingCount:
     * Current count of diving into 'why'
@@ -43,13 +43,13 @@ Your task:
   - For you
     * Start by asking "Why?" and "Why should I do this?"
     * Observe the context of the question or request.
-    * Find the **anomaly** or gap between the user's question and the as-is.
+    * Find the **anomaly** between the user's question and the as-is.
   - For the user
     * Show the user (1) "DivingWhy" (2) "MyQuestion"
     * Finally, use **AskUserQuestion** to ask
 After asking the question:
-  - Transfer to next task.
-  - Your goal is over.
+  - Pass the answer and question to next task.
+  - Your goal is complete.
 Example:
   - UserQuestion: "How can I optimize the logics?"
   - DivingWhy: "Why does the user need optimization? Is that for performance or something else?"
